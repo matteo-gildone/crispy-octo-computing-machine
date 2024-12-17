@@ -3,23 +3,57 @@ import core from './core.js';
 import nodePlugin from 'eslint-plugin-n';
 import securityPlugin from 'eslint-plugin-security';
 
-export default [
-	...core,
+const securityConfigs = [
 	securityPlugin.configs.recommended,
+	{
+		name: 'crispy-octo-computing-machine/security',
+		plugins: {
+			security: securityPlugin,
+		}
+	}
+];
+
+const cjsConfigs = [
+	nodePlugin.configs['flat/recommended-script'],
+	{
+		name: "eslint-config-eslint/cjs",
+		plugins: {
+			security: nodePlugin,
+		}
+	}
+];
+
+const esmConfigs = [
+	nodePlugin.configs['flat/recommended-module'],
+	{
+		name: "eslint-config-eslint/esm",
+		plugins: {
+			security: nodePlugin,
+		}
+	}
+];
+
+export default [
+	{
+		name: "crispy-octo-computing-machine/node",
+		linterOptions: {
+			reportUnusedDisableDirectives: "error"
+		},
+		languageOptions: {
+			globals: {...globals.node}
+		}
+	},
+	...core,
+	...securityConfigs,
+	...cjsConfigs,
+	...esmConfigs,
 	{
 		languageOptions: {
 			globals: {...globals.node}
 		},
-		plugins: {
-			n: nodePlugin,
-			security: securityPlugin,
-		},
 		rules: {
-			'n/no-unpublished-bin': 'error',
-			'n/process-exit-as-throw': 'error',
-			'n/no-deprecated-api': 'error',
 			// unicorn overrides
-			"unicorn/prefer-module": 0,
+			'unicorn/prefer-module': 0,
 			'unicorn/catch-error-name': [
 				'error',
 				{
