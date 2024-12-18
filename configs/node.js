@@ -13,16 +13,6 @@ const securityConfigs = [
 	}
 ];
 
-const cjsConfigs = [
-	nodePlugin.configs['flat/recommended-script'],
-	{
-		name: "eslint-config-eslint/cjs",
-		plugins: {
-			security: nodePlugin,
-		}
-	}
-];
-
 const esmConfigs = [
 	nodePlugin.configs['flat/recommended-module'],
 	{
@@ -45,7 +35,6 @@ export default [
 	},
 	...core,
 	...securityConfigs,
-	...cjsConfigs,
 	...esmConfigs,
 	{
 		languageOptions: {

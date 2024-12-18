@@ -21,6 +21,18 @@ const jsConfigs = [
 	}
 ];
 
+// const noUseExtendNativeConfigs = [
+// 	{
+// 		name: 'crispy-octo-computing-machine/eslint-plugin-no-use-extend-native',
+// 		plugins: {
+// 			'no-use-extend-native': eslintPluginNoUseExtendNative
+// 		},
+// 		rules: {
+// 			'no-use-extend-native/no-use-extend-native': 'error'
+// 		}
+// 	}
+// ];
+
 const unicornConfigs = [
 	{
 		name: 'crispy-octo-computing-machine/unicorn',
@@ -105,6 +117,7 @@ export default [
 		}
 	},
 	...jsConfigs,
+	// ...noUseExtendNativeConfigs,
 	...unicornConfigs,
 	...importConfigs,
 	...promiseConfigs
